@@ -8,7 +8,9 @@
 **Example App**
 ```js
 const express = require('express');
-const expressListRoutes = require('express-list-routes');
+const ExpressListRoutes = require('cuz-express-list-routes');
+var expressListRoutes = new ExpressListRoutes();
+
 
 const app = express();
 
@@ -22,7 +24,7 @@ router.route('/user')
 ``` 
 **List all Routes with prefix**
 ```js
-expressListRoutes(app, { prefix: '/api/v1' });
+expressListRoutes.discover(app, { prefix: '/api/v1' });
 // Logs out the following:
 // GET    /api/v1/health
 // POST   /api/v1/admin/user
@@ -31,11 +33,20 @@ expressListRoutes(app, { prefix: '/api/v1' });
 ```
 **Or only log out nested router routes**
 ```js
-expressListRoutes(router);
+expressListRoutes.discover(router);
 // Logs out the following:
 // POST   /admin/user
 // GET    /admin/user
 // PUT    /admin/user
+```
+**Get all Routes after discover every where**
+```js
+const routes = expressListRoutes.getRoutes();
+// Logs out the following:
+// GET    /api/v1/health
+// POST   /api/v1/admin/user
+// GET    /api/v1/admin/user
+// PUT    /api/v1/admin/user
 ```
 
 ## Installation
@@ -51,7 +62,8 @@ You can pass a second argument to set some options
 ```js
   {
     prefix: '', // A prefix for router Path
-    spacer: 7   // Spacer between router Method and Path
+    spacer: 7,   // Spacer between router Method and Path,
+    showLog: false // Show log in discover, default true
   }
 ```
 
