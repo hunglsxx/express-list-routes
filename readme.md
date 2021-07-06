@@ -8,7 +8,7 @@
 **Example App**
 ```js
 const express = require('express');
-const ExpressListRoutes = require('cuz-express-list-routes');
+const ExpressListRoutes = require('express-list-routes-cuz');
 var expressListRoutes = new ExpressListRoutes();
 
 
