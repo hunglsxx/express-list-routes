@@ -1,4 +1,4 @@
-# express-list-routes
+# express-list-routes-cuz
 
   List all routes used in Express[3,4,5]
 
@@ -39,14 +39,21 @@ expressListRoutes.discover(router);
 // GET    /admin/user
 // PUT    /admin/user
 ```
-**Get all Routes after discover every where**
+**Get all routes after discover from every where**
 ```js
 const routes = expressListRoutes.getRoutes();
 // Logs out the following:
-// GET    /api/v1/health
-// POST   /api/v1/admin/user
-// GET    /api/v1/admin/user
-// PUT    /api/v1/admin/user
+/*
+[
+    { method: 'GET', stackPath: '/' },
+    { method: 'GET', stackPath: '/users' },
+    { method: 'GET', stackPath: '/v1/articles' },
+    { method: 'POST', stackPath: '/v1/articles' },
+    { method: 'GET', stackPath: '/v1/articles/:docId' },
+    { method: 'PATCH', stackPath: '/v1/articles/:docId' },
+    { method: 'DELETE', stackPath: '/v1/articles/:docId' }
+]
+*/
 ```
 
 ## Installation
@@ -66,24 +73,3 @@ You can pass a second argument to set some options
     showLog: false // Show log in discover, default true
   }
 ```
-
-## Migrations 
-### 0.1 -> 1.0
-The order of the params have changed, and dropped support for freeform text.
-
-**BEFORE 0.1<**
-
-```expressListRoutes({ prefix: '/api/v1' }, 'API:', router);```
-
-**AFTER 1.0+**
-
-```expressListRoutes(router, { prefix: '/api/v1' });```
-
-[npm-image]: https://img.shields.io/npm/v/express-list-routes.svg?style=flat
-[npm-url]: https://npmjs.org/package/express-list-routes
-[downloads-image]: https://img.shields.io/npm/dm/express-list-routes.svg?style=flat
-[downloads-url]: https://npmjs.org/package/express-list-routes
-[travis-image]: https://img.shields.io/travis/strongloop/express-list-routes.svg?style=flat
-[travis-url]: https://travis-ci.org/strongloop/express-list-routes
-[coveralls-image]: https://img.shields.io/coveralls/strongloop/express-list-routes.svg?style=flat
-[coveralls-url]: https://coveralls.io/r/strongloop/express-list-routes?branch=master
