@@ -52,7 +52,7 @@ const routes = expressListRoutes.getRoutes();
 ## Installation
 
 ```bash
-npm install express-list-routes
+npm install express-list-routes-cuz
 ```
 
 ## Options
